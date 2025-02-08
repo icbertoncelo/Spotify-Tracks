@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 export const useTracks = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
+  const [search, setSearch] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -13,8 +15,7 @@ export const useTracks = () => {
         setLoading(true)
         const trackRepository = new TrackRepository();
         
-        await trackRepository.getAccessToken()
-        const data = await trackRepository.getAllTracks();
+        const data = await trackRepository.getAllTracks(search);
         setTracks(data)
       } catch (error: unknown) {
         console.log({ error })
@@ -24,8 +25,16 @@ export const useTracks = () => {
       }
     };
 
-    fetchTracks();
-  }, []);
+    if (search.length > 3) {
+      fetchTracks();
+    } 
+  }, [search]);
 
-  return { tracks, loading, error };
+  return { 
+    tracks, 
+    loading, 
+    error, 
+    search, 
+    setSearch 
+  };
 };

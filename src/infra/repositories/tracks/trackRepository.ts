@@ -39,14 +39,18 @@ export class TrackRepository implements ITrackUseCase {
     }))
   }
 
-  async getAllTracks(): Promise<Track[]> {
+  async getAllTracks(query: string): Promise<Track[]> {
     try {
+      const params = new URLSearchParams({
+        q: query,
+        type: "track",
+        limit: "10"
+      });
+
       const data = await this.trackApiHttpClient.get<SpotifyApiResponse>(
-        "/search?q=Imagine%20Dragons&type=track&limit=10",
+        `/search?${params}`,
         { headers: this.getAuthHeaders() }
       );
-
-      console.log(data.tracks)
 
       return this.formatSpotifyResponse(data.tracks)
     } catch (error) {
