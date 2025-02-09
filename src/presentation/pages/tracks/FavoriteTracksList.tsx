@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useFavoriteTracks } from "@/presentation/contexts/tracks/FavoriteTracksContext";
 import { Box, VStack } from "@chakra-ui/react";
 import { HeadingText } from "@/presentation/components/HeadingText/HeadingText";
 import { TrackList } from "@/presentation/components/TrackList/TrachList";
+import { useFavoriteTracks } from "@/presentation/hooks/tracks/useFavoriteTracks";
 
 export function FavoriteTracksListPage() {
   const { favoriteTracks } = useFavoriteTracks()

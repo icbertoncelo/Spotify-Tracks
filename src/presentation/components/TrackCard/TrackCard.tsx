@@ -13,7 +13,12 @@ export function TrackCard({ track }: TrackCardProps) {
   const { togglePlay, playingTrack } = usePlayTrack()
 
   return (
-    <Box key={track.id} p={4} borderWidth={1} borderRadius="md" boxShadow="sm">
+    <Box 
+      p={4} borderWidth={1} 
+      borderRadius="md" 
+      boxShadow="sm"
+      data-testid="track-card"
+    >
       <HStack spaceX={4}>
         <Image src={track.album.image} boxSize="60px" borderRadius="md" />
         <Box flex={1}>
@@ -23,12 +28,14 @@ export function TrackCard({ track }: TrackCardProps) {
           </Text>
         </Box>
         <IconButton
+          data-testid="play-pause-button"
           aria-label="Play/Pause"
           onClick={() => togglePlay(track.id, track.previewUrl)}
         >
           {playingTrack === track.id ? <FaPause /> : <FaPlay />}
         </IconButton>
         <IconButton
+          data-testid="favorite-button"
           aria-label="Favorite"
           onClick={() => toggleFavorite(track)}
         >

@@ -8,7 +8,7 @@ interface TrackListProps {
 
 export function TrackList({ tracks }: TrackListProps) {
   return (
-    <VStack spaceY={4} mt={4} align="stretch">
+    <VStack spaceY={4} mt={4} align="stretch" data-testid="track-list">
       {tracks.map((track) => (
         <TrackCard key={track.id} track={track} />
       ))}
