@@ -28,7 +28,6 @@ interface SpotifyTrack {
   track_number: number;
 }
 
-
 export  interface SpotifyTrackData {
   total: number;
   items: SpotifyTrack[];

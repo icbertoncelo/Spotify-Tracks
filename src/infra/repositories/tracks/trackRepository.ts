@@ -1,8 +1,9 @@
 import { ITrackUseCase } from "@/domain/tracks/usecases/trackUseCase";
-import { trackApiInstance, trackAuthApiInstance } from "./trackInstance";
+import { trackApiInstance } from "./trackInstance";
 import { AxiosHttpClient } from "@/infra/http/axiosHttpClient";
 import { SpotifyAuthResponse } from "@/domain/tracks/entities/auth";
 import { SpotifyApiResponse, SpotifyTrackData, Track } from "@/domain/tracks/entities/track";
+import { trackAuthApiInstance } from "./trackAuthInstance";
 
 export class TrackRepository implements ITrackUseCase {
   private readonly trackApiHttpClient = new AxiosHttpClient(trackApiInstance)
