@@ -10,9 +10,9 @@ export function FavoriteTracksListPage() {
   return (
     <Box p={4} maxW="800px" mx="auto">
       <VStack align="stretch">
-        <Link to="/" >Go back to Home</Link>
+        <Link to="/" >Voltar para Home</Link>
         <HeadingText>
-          Favorites
+          Lista de Favoritos
         </HeadingText>
         <TrackList tracks={favoriteTracks}  />
       </VStack>
