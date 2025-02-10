@@ -1,6 +1,7 @@
 import { Track } from "@/domain/tracks/entities/track";
 import { usePlayTrack } from "@/presentation/hooks/tracks/usePlayTrack";
 import { Box, Button, HStack, IconButton, Image, Text } from "@chakra-ui/react";
+import { memo } from "react";
 import { FaHeart, FaPause, FaPlay, FaSpotify } from "react-icons/fa";
 
 interface TrackCardProps {
@@ -9,7 +10,7 @@ interface TrackCardProps {
   toggleFavorite: (track: Track) => void;
 }
 
-export function TrackCard({
+function TrackCardComponent({
   track,
   favoriteTracks,
   toggleFavorite,
@@ -63,3 +64,5 @@ export function TrackCard({
     </Box>
   );
 }
+
+export const TrackCard = memo(TrackCardComponent);
