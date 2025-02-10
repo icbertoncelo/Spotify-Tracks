@@ -4,13 +4,6 @@ import { TrackCard } from "./TrackCard";
 import { MOCK_TRACKS, MOCK_TRACK } from "@/__tests__/__mocks__/track";
 
 const mockToggleFavorite = vi.fn()
-vi.mock("@/presentation/hooks/tracks/useFavoriteTracks", () => ({
-  useFavoriteTracks: () => ({
-    favoriteTracks: MOCK_TRACKS,
-    toggleFavorite: mockToggleFavorite
-  }),
-}));
-
 const mockTogglePlay = vi.fn()
 vi.mock("@/presentation/hooks/tracks/usePlayTrack", () => ({
   usePlayTrack: () => ({
@@ -19,9 +12,19 @@ vi.mock("@/presentation/hooks/tracks/usePlayTrack", () => ({
   }),
 }));
 
+function renderComponent() {
+  return renderWithChakra(
+    <TrackCard 
+      track={MOCK_TRACK} 
+      favoriteTracks={MOCK_TRACKS}
+      toggleFavorite={mockToggleFavorite} 
+    />
+  );
+}
+
 describe("TrackCard Component", () => {
   it("renders track details correctly", () => {
-    renderWithChakra(<TrackCard track={MOCK_TRACK} />);
+    renderComponent()
 
     expect(screen.getByText(MOCK_TRACK.name)).toBeInTheDocument();
     expect(screen.getByText(`${MOCK_TRACK.artist} • ${MOCK_TRACK.album.name}`)).toBeInTheDocument();
@@ -29,7 +32,7 @@ describe("TrackCard Component", () => {
   });
 
   it("calls togglePlay when Play/Pause button is clicked", () => {
-    renderWithChakra(<TrackCard track={MOCK_TRACK} />);
+    renderComponent()
     
     const playPauseButton = screen.getByTestId("play-pause-button");
     fireEvent.click(playPauseButton);
@@ -38,7 +41,7 @@ describe("TrackCard Component", () => {
   });
 
   it("calls toggleFavorite when Favorite button is clicked", () => {
-    renderWithChakra(<TrackCard track={MOCK_TRACK} />);
+    renderComponent()
     
     const favoriteButton = screen.getByTestId("favorite-button");
     fireEvent.click(favoriteButton);
@@ -47,7 +50,7 @@ describe("TrackCard Component", () => {
   });
 
   it("displays red heart when track is favorite", () => {
-    renderWithChakra(<TrackCard track={MOCK_TRACK} />);
+    renderComponent()
     
     const favoriteButton = screen.getByTestId("favorite-button");
     const heartIcon = favoriteButton.childNodes[0]
@@ -55,7 +58,7 @@ describe("TrackCard Component", () => {
   });
 
   it("Spotify button has correct URL", () => {
-    renderWithChakra(<TrackCard track={MOCK_TRACK} />);
+    renderComponent()
     
     const spotifyLink = screen.getByRole("link");
     expect(spotifyLink).toHaveAttribute("href", MOCK_TRACK.uri);

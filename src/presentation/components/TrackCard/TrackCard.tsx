@@ -1,15 +1,19 @@
 import { Track } from "@/domain/tracks/entities/track";
-import { useFavoriteTracks } from "@/presentation/hooks/tracks/useFavoriteTracks";
 import { usePlayTrack } from "@/presentation/hooks/tracks/usePlayTrack";
 import { Box, Button, HStack, IconButton, Image, Text } from "@chakra-ui/react";
 import { FaHeart, FaPause, FaPlay, FaSpotify } from "react-icons/fa";
 
 interface TrackCardProps {
   track: Track
+  favoriteTracks: Track[]
+  toggleFavorite: (track: Track) => void
 }
 
-export function TrackCard({ track }: TrackCardProps) {
-  const { favoriteTracks, toggleFavorite } = useFavoriteTracks()
+export function TrackCard({ 
+  track,
+  favoriteTracks,
+  toggleFavorite
+}: TrackCardProps) {
   const { togglePlay, playingTrack } = usePlayTrack()
 
   return (

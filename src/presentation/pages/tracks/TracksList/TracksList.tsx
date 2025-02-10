@@ -18,8 +18,8 @@ export function TrackListPage() {
           mb={4}
           p={4}
         />
-        <Link to="/favoritos">Ir para favoritos</Link>
-        <HeadingText>Lista de Músicas</HeadingText>
+        <Link to="/favoritos">Ir para Favoritos</Link>
+        <HeadingText>Lista de músicas</HeadingText>
         <TrackList tracks={tracks} />
       </VStack>
     </Box>

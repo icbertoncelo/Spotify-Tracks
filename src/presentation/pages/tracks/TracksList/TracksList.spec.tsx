@@ -29,7 +29,7 @@ describe("TracksList Page", () => {
   it("renders heading and link", () => {
     renderPage()
 
-    expect(screen.getByRole("link", { name: /go to Favorites/i })).toBeInTheDocument();
-    expect(screen.getByText(/tracks/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Ir para Favoritos/i })).toBeInTheDocument();
+    expect(screen.getByText(/Lista de músicas/i)).toBeInTheDocument();
   });
 });
