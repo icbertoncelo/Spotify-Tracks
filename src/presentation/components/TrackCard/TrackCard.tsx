@@ -1,5 +1,4 @@
 import { Track } from "@/domain/tracks/entities/track";
-import { usePlayTrack } from "@/presentation/hooks/tracks/usePlayTrack";
 import { Box, Button, HStack, IconButton, Image, Text } from "@chakra-ui/react";
 import { memo } from "react";
 import { FaHeart, FaPause, FaPlay, FaSpotify } from "react-icons/fa";
@@ -8,14 +7,18 @@ interface TrackCardProps {
   track: Track;
   favoriteTracks: Track[];
   toggleFavorite: (track: Track) => void;
+  playingTrack: string | null;
+  togglePlay: (trackId: string, previewUrl: string) => void;
 }
 
 function TrackCardComponent({
   track,
   favoriteTracks,
   toggleFavorite,
+  togglePlay,
+  playingTrack,
 }: TrackCardProps) {
-  const { togglePlay, playingTrack } = usePlayTrack();
+  const isPlaying = playingTrack === track.id;
 
   return (
     <Box
@@ -38,7 +41,7 @@ function TrackCardComponent({
           aria-label="Play/Pause"
           onClick={() => togglePlay(track.id, track.previewUrl)}
         >
-          {playingTrack === track.id ? <FaPause /> : <FaPlay />}
+          {isPlaying ? <FaPause /> : <FaPlay />}
         </IconButton>
         <IconButton
           data-testid="favorite-button"

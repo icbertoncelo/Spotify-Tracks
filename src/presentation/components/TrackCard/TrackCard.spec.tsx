@@ -5,12 +5,6 @@ import { MOCK_TRACKS, MOCK_TRACK } from "@/__tests__/__mocks__/track";
 
 const mockToggleFavorite = vi.fn();
 const mockTogglePlay = vi.fn();
-vi.mock("@/presentation/hooks/tracks/usePlayTrack", () => ({
-  usePlayTrack: () => ({
-    togglePlay: mockTogglePlay,
-    playingTrack: "2",
-  }),
-}));
 
 function renderComponent() {
   return renderWithChakra(
@@ -18,6 +12,8 @@ function renderComponent() {
       track={MOCK_TRACK}
       favoriteTracks={MOCK_TRACKS}
       toggleFavorite={mockToggleFavorite}
+      togglePlay={mockTogglePlay}
+      playingTrack="2"
     />
   );
 }

@@ -29,7 +29,8 @@ Esta aplicação permite que os usuários listem músicas da API do Spotify, pes
 
 ### Pré-requisitos
 
-Certifique-se de ter os seguintes itens instalados:
+1. Certifique-se de ter as credenciais de acesso a api do Spotify, as mesmas serão fornecidas pelo DEV.
+2. Certifique-se de ter os seguintes itens instalados:
 
 - NodeJS
 - npm ou yarn
