@@ -3,5 +3,5 @@ import { Track } from "../entities/track";
 
 export interface ITrackUseCase {
   getAllTracks: (query: string) => Promise<Track[]>;
-  getAccessToken: () => Promise<SpotifyAuthResponse>
+  getAccessToken: () => Promise<SpotifyAuthResponse>;
 }

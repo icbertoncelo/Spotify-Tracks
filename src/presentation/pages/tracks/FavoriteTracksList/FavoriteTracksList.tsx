@@ -5,16 +5,14 @@ import { TrackList } from "@/presentation/components/TrackList/TrachList";
 import { useFavoriteTracks } from "@/presentation/hooks/tracks/useFavoriteTracks";
 
 export function FavoriteTracksListPage() {
-  const { favoriteTracks } = useFavoriteTracks()
+  const { favoriteTracks } = useFavoriteTracks();
 
   return (
     <Box p={4} maxW="800px" mx="auto">
       <VStack align="stretch">
-        <Link to="/" >Voltar para Home</Link>
-        <HeadingText>
-          Lista de Favoritos
-        </HeadingText>
-        <TrackList tracks={favoriteTracks}  />
+        <Link to="/">Voltar para Home</Link>
+        <HeadingText>Lista de Favoritos</HeadingText>
+        <TrackList tracks={favoriteTracks} />
       </VStack>
     </Box>
   );

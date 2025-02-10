@@ -1,35 +1,39 @@
-import { Track } from '@/domain/tracks/entities/track';
-import { createContext, useCallback, useState } from 'react';
+import { Track } from "@/domain/tracks/entities/track";
+import { createContext, useCallback, useState } from "react";
 
 export interface FavoriteTracksContextData {
-  favoriteTracks: Track[]
-  toggleFavorite: (track: Track) => void
+  favoriteTracks: Track[];
+  toggleFavorite: (track: Track) => void;
 }
 
 interface FavoriteTracksProviderProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-const FavoriteTracksContext = createContext<FavoriteTracksContextData>({} as FavoriteTracksContextData);
+const FavoriteTracksContext = createContext<FavoriteTracksContextData>(
+  {} as FavoriteTracksContextData
+);
 
 function FavoriteTracksProvider({ children }: FavoriteTracksProviderProps) {
-  const [favoriteTracks, setFavoriteTracks] = useState<Track[]>([])
+  const [favoriteTracks, setFavoriteTracks] = useState<Track[]>([]);
 
   const toggleFavorite = useCallback((track: Track) => {
-    setFavoriteTracks(prevState => {
-      const isFavorite = prevState.some(favoriteTrack => favoriteTrack.id === track.id)
+    setFavoriteTracks((prevState) => {
+      const isFavorite = prevState.some(
+        (favoriteTrack) => favoriteTrack.id === track.id
+      );
 
-      return isFavorite 
-        ? prevState.filter(prevTrack => prevTrack.id !== track.id) 
-        : [...prevState, track]
-    })
-  }, [])
+      return isFavorite
+        ? prevState.filter((prevTrack) => prevTrack.id !== track.id)
+        : [...prevState, track];
+    });
+  }, []);
 
   return (
-    <FavoriteTracksContext.Provider 
+    <FavoriteTracksContext.Provider
       value={{
-        favoriteTracks, 
-        toggleFavorite
+        favoriteTracks,
+        toggleFavorite,
       }}
     >
       {children}
@@ -37,4 +41,4 @@ function FavoriteTracksProvider({ children }: FavoriteTracksProviderProps) {
   );
 }
 
-export { FavoriteTracksContext, FavoriteTracksProvider }
+export { FavoriteTracksContext, FavoriteTracksProvider };

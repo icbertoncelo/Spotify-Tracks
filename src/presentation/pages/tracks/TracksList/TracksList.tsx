@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-import { useTracks } from "@/presentation/hooks/tracks/useTracks"
+import { useTracks } from "@/presentation/hooks/tracks/useTracks";
 import { Box, Input, VStack } from "@chakra-ui/react";
 import { TrackList } from "@/presentation/components/TrackList/TrachList";
 import { HeadingText } from "@/presentation/components/HeadingText/HeadingText";
 
 export function TrackListPage() {
-  const { tracks, search, setSearch } = useTracks()
+  const { tracks, search, setSearch } = useTracks();
 
   return (
     <Box p={4} maxW="800px" mx="auto">

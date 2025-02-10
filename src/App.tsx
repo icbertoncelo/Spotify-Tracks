@@ -1,10 +1,10 @@
-import { AppRoutes } from  "@/presentation/routes/AppRoutes";
+import { AppRoutes } from "@/presentation/routes/AppRoutes";
 import { BrowserRouter } from "react-router-dom";
 import { FavoriteTracksProvider } from "./presentation/contexts/tracks/FavoriteTracksContext";
 import { useTrackApiAuth } from "./presentation/hooks/tracks/useTrackApiAuth";
 
 export function App() {
-  useTrackApiAuth()
+  useTrackApiAuth();
 
   return (
     <BrowserRouter>
@@ -12,5 +12,5 @@ export function App() {
         <AppRoutes />
       </FavoriteTracksProvider>
     </BrowserRouter>
-  )
+  );
 }

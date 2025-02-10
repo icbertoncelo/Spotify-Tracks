@@ -28,13 +28,13 @@ interface SpotifyTrack {
   track_number: number;
 }
 
-export  interface SpotifyTrackData {
+export interface SpotifyTrackData {
   total: number;
   items: SpotifyTrack[];
 }
 
 export interface SpotifyApiResponse {
-  tracks: SpotifyTrackData
+  tracks: SpotifyTrackData;
 }
 
 export interface Track {
@@ -47,7 +47,7 @@ export interface Track {
   album: {
     image: string;
     name: string;
-  },
+  };
   artist: string;
   trackNumber: number;
 }

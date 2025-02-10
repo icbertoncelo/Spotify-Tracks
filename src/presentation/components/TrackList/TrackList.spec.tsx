@@ -5,13 +5,15 @@ import { MOCK_TRACKS } from "@/__tests__/__mocks__/track";
 import { Track } from "@/domain/tracks/entities/track";
 
 vi.mock("../TrackCard/TrackCard", () => ({
-  TrackCard: ({ track }: { track: Track }) => <div data-testid="track-card">{track.name}</div>,
+  TrackCard: ({ track }: { track: Track }) => (
+    <div data-testid="track-card">{track.name}</div>
+  ),
 }));
 
 describe("TrackList Component", () => {
   it("renders without crashing", () => {
     renderWithChakra(<TrackList tracks={[]} />);
-    expect(screen.getByTestId("track-list")).toBeInTheDocument()
+    expect(screen.getByTestId("track-list")).toBeInTheDocument();
   });
 
   it("renders a list of TrackCard components", () => {

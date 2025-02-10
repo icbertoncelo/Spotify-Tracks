@@ -6,10 +6,10 @@ export function useTrackApiAuth() {
     const authenticateTrackApi = async () => {
       try {
         const trackRepository = new TrackRepository();
-        
-        await trackRepository.getAccessToken()
+
+        await trackRepository.getAccessToken();
       } catch (error: unknown) {
-        console.log({ error })
+        console.log({ error });
       }
     };
 

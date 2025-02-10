@@ -20,16 +20,18 @@ function renderPage() {
 
 describe("FavoriteTracksList Page", () => {
   it("renders heading and link", () => {
-    renderPage()
+    renderPage();
 
-    expect(screen.getByRole("link", { name: /Voltar para Home/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /Voltar para Home/i })
+    ).toBeInTheDocument();
     expect(screen.getByText(/Lista de Favoritos/i)).toBeInTheDocument();
   });
 
   it("renders TrackList with favorite tracks", () => {
-    renderPage()
+    renderPage();
 
-    MOCK_TRACKS.forEach(track => {
+    MOCK_TRACKS.forEach((track) => {
       expect(screen.getByText(track.name)).toBeInTheDocument();
     });
   });
